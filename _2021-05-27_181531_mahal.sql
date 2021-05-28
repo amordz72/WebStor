@@ -25,3 +25,54 @@ CREATE TABLE `users` (
   KEY `tyNum` (`tyNum`),
   CONSTRAINT `users_ibfk_1` FOREIGN KEY (`tyNum`) REFERENCES `types` (`tyId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=' الحسابات';
+
+CREATE TABLE category(  
+    caId int NOT NULL primary key AUTO_INCREMENT comment 'primary key',
+    create_time DATETIME COMMENT 'create time',
+    update_time DATETIME COMMENT 'update time',
+  caName varchar(255)  
+) default charset utf8  ;
+
+
+DROP TABLE IF EXISTS prod;
+CREATE TABLE prod(  
+    prId int NOT NULL primary key AUTO_INCREMENT comment 'primary key',
+    prName varchar(255),
+    prPrixA DECIMAL(8,2) NOT NULL ,
+    prPrixS DECIMAL(8,2) NOT NULL ,
+    QtyLast int  NOT NULL COMMENT 'حد-الطلب',
+   caNum INT NOT NULL ,
+
+    create_time DATETIME COMMENT 'create time',
+    update_time DATETIME COMMENT 'update time',
+    FOREIGN KEY (caNum) REFERENCES category(caId)
+  
+) default charset utf8 comment '';
+
+/* */;
+CREATE TABLE hisab(
+    
+
+
+ );
+/* */
+DROP TABLE if EXISTS  hisab;
+CREATE TABLE hisab(
+    
+
+
+ );
+
+DROP TABLE if EXISTS  rec;
+CREATE TABLE rec(  
+    reId int NOT NULL primary key AUTO_INCREMENT comment 'primary key',
+    reType varchar(255) comment '',
+    reUser int NOT  NOT ,
+    reHisab int NOT  NOT ,
+    reIn int NOT  NOT ,
+    reOut int NOT  NOT ,
+
+     create_time DATETIME COMMENT 'create time',
+    update_time DATETIME COMMENT 'update time'
+   reNotes TEXT 
+) default charset utf8 comment 'السندات';
