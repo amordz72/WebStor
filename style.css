@@ -1,0 +1,19 @@
+nav{
+    height: 40px;
+    display: flex;
+    align-items: center;
+    background-color: rgb(53, 77, 102);
+    text-align: center;
+}
+
+a{
+    color: white;
+}
+ul{
+    text-decoration: none;
+}
+li{
+    display: inline-block;
+    margin-left: 10px;
+    text-decoration: none;
+}
