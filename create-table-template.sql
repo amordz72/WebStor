@@ -8,7 +8,7 @@ CREATE TABLE prod(
     prName varchar(255),
     prPrixA DECIMAL(8,2) NOT NULL ,
     prPrixS DECIMAL(8,2) NOT NULL ,
-    prQtyLast int  NOT NULL ,
+    prQtyLast int  NOT NULL COMMENT 'حد-الطلب',
    caNum INT NOT NULL ,
 
     create_time DATETIME COMMENT 'create time',
