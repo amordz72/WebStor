@@ -10,49 +10,39 @@
 </head>
 
 <body>
-    <div class="container">
-        <nav>
-            <ul>
-
-                <li><a href="http://" target="_blank" rel="noopener noreferrer">Home</a></li>
-                <li><a href="http://" target="_blank" rel="noopener noreferrer">url 1</a>
-                <li><a href="http://" target="_blank" rel="noopener noreferrer">url 2</a></li>
-                </li>
-                <li>
-
-                </li>
-            </ul>
-        </nav>
-        <div id="main">
-            <div id="sidebar">
-                sidebar
-            </div>
-            <div id="conternt">
-                <div id="counter" style="background-color: chartreuse;">
-                    <h3 style="text-align: center;"> Counter:</h3> {{ counter }}
-                </div>
-                <div id="app">
-                    {{ info }}
-                    <hr>
-
-                    <button @click="getData">Click</button>
-                    <button v-on:click="reset">reset</button>
-
-                </div>
-            </div>
-
-
-
-
-        </div>
-        <footer>
-
-        </footer>
-    </div>
+    <div id='myapp'>
+ 
+        <table border='1' width='80%' style='border-collapse: collapse;'>
+         <tr>
+           <th>Username</th>
+           <th>Name</th>
+           <th>Email</th>
+           <th></th>
+         </tr>
+      
+         <!-- Add -->
+         <tr>
+           <td><input type='text' v-model='username'></td>
+           <td><input type='text' v-model='name'></td>
+           <td><input type='text' v-model='email'></td>
+           <td><input type='button' value='Add' @click='addRecord();'></td>
+         </tr>
+      
+         <!-- Update/Delete -->
+         <tr v-for='(user,index) in users'>
+           <td><input type='text' v-model='user.username' ></td>
+           <td><input type='text' v-model='user.name' ></td>
+           <td><input type='text' v-model='user.email' ></td>
+           <td><input type='button' value='Update' @click='updateRecord(index,user.id);'>&nbsp;
+           <input type='button' value='Delete' @click='deleteRecord(index,user.id)'></td>
+         </tr>
+        </table>
+       
+      </div>
     <script src="https://unpkg.com/vue@next"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 
-    <script src="layout/js/main.js"></script>
+    <script src="users.js"></script>
 </body>
 
 </html>
