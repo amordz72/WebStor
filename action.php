@@ -2,14 +2,14 @@
 
 //action.php
 
-$connect = new PDO("mysql:host=localhost;dbname=testing", "root", "");
+$connect = new PDO("mysql:host=localhost;dbname=mahal", "root", "");
 $received_data = json_decode(file_get_contents("php://input"));
 $data = array();
 if($received_data->action == 'fetchall')
 {
  $query = "
- SELECT * FROM tbl_sample 
- ORDER BY id DESC
+ SELECT * FROM users 
+ ORDER BY usId DESC
  ";
  $statement = $connect->prepare($query);
  $statement->execute();
@@ -21,16 +21,16 @@ if($received_data->action == 'fetchall')
 }
 if($received_data->action == 'insert')
 {
- $data = array(
-  ':first_name' => $received_data->firstName,
-  ':last_name' => $received_data->lastName
- );
-
- $query = "
- INSERT INTO tbl_sample 
- (first_name, last_name) 
- VALUES (:first_name, :last_name)
- ";
+    $data = array(
+        ':usName' => $received_data->usName,
+        ':tyNum' => $received_data->tyNum
+       );
+      
+       $query = "
+       INSERT INTO users 
+        `users`(  `usName`, `tyNum` )
+         VALUES ( :usName , :tyNum  )
+       ";
 
  $statement = $connect->prepare($query);
 
@@ -107,5 +107,3 @@ if($received_data->action == 'delete')
 
  echo json_encode($output);
 }
-
-?>
